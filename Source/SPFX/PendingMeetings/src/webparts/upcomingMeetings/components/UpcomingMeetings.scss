@@ -1,0 +1,131 @@
+@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+$mobile: "only screen and (max-width : 768px)";
+$desktop: "only screen and (max-width : 1280px)";
+
+.upcomingMeetings {
+  .hide{
+    display: none;
+  }
+  .container {
+    margin: 0px auto;
+    overflow: hidden;
+    display: flex;
+    @media #{$mobile} {
+      display: block;
+    }
+    .events {
+      background-color: #faf9f8;
+      width: 50%;
+      padding: 20px 20px;
+      @media #{$mobile} {
+        width: auto;
+        padding: 20px 10px;
+      }
+
+    }
+    .tasks {
+      width: 50%;
+      padding: 20px 20px;
+      background-color: white;
+      color: #252423;
+      font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+      @media #{$mobile} {
+        width: auto;
+        background-color: #faf9f8;
+        padding: 20px 10px;
+      }
+      .dropDown{
+        display: flex;
+        margin-bottom: 15px;
+        >*{
+          line-height: 32px;
+          font-size: 24px;
+          @media #{$mobile} {
+            font-size: 32px;
+          }
+        }
+        >label{
+          font-weight: 600;
+          padding-right: 15px;
+        }
+        .ms-Dropdown-title{
+          font-size: 20px;
+          @media #{$mobile} {
+            font-size: 24px;
+          }
+        }
+      }
+      .task{
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.092);
+        position: relative;
+        color: rgb(51, 51, 51);
+        margin: 0px 0px 32px 0px;
+        padding: 15px 15px;
+        font-size: 16px;
+        line-height: 1.31;
+        background: white;
+        .TaskTitle{
+          font-weight: bold;
+          @media #{$mobile} {
+            font-size: 24px;
+          }
+        }
+        .TaskDetails{
+          margin-top: 10px;
+          display: flex;
+          .dueDate{
+            width: 20%;
+          }
+          .eventTitle{
+            width: 80%;
+          }
+        }
+        .eventStatus{
+          display: flex;
+          justify-content: flex-end;
+          font-weight: bold;
+          span{
+            margin-left: 5px;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+  }
+
+  /* .event {
+    box-shadow: var(--event-box-shadow, 0px 2px 8px rgba(0, 0, 0, 0.092));
+    display: flex;
+    margin: 10px 10px;
+    background-color: white;
+    .eventtimecontainer {
+      display: flex;
+      flex-direction: column;
+      width: 120px;
+      margin: 18px 38px 18px 18px;
+      color: rgb(51, 51, 51);
+      .eventtime {
+        font-size: var(--event-time-font-size, 12px);
+        color: #000000;
+        font-weight: 600;
+      }
+    }
+    .eventdetailscontainer {
+      margin: 14px 18px 14px 0px;
+      .eventsubject {
+        font-size: var(--event-subject-font-size, 19px);
+        color: #333333;
+        margin: 0px 18px 0px 0px;
+      }
+      .eventlocationcontainer {
+        display: flex;
+        margin: 8px 18px 0px 0px;
+        .eventlocation {
+          font-size: var(--event-location-font-size, 12px);
+          color: #000000;
+          margin: 0px 0px 0px 4px;
+        }
+      }
+    }
+  } */
+}

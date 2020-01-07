@@ -1,0 +1,51 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+   string teamTabResource = Configuration["AzureAd:TeamTabResource"];
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MeetingCaptureWebApp</title>
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/10.0.0/css/fabric.min.css" />
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.min.css" />
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.components.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class="ms-Fabric" dir="ltr">
+    <input id="teamTabResource" hidden value="@teamTabResource">
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <!-- Momentjs (via CDN) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js"></script>
+
+    <!-- Microsoft Teams JavaScript API (via CDN) -->
+    <script src="https://statics.teams.microsoft.com/sdk/v1.5.2/js/MicrosoftTeams.min.js" integrity="sha384-TJ2M0tW5fxu25/LwZie10M5O53iP1Q5FweiXk5rvfTHmvA7x2a6I9+KKi2pjAk6k" crossorigin="anonymous"></script>
+
+
+    <!-- Fabric js (via CDN) -->
+    <script src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/js/fabric.min.js"></script>
+
+    <!-- Jquery (via CDN) -->
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
+    <script src="https://cdn.graph.office.net/prod/Scripts/fabric-js/PickaDate.js"></script>
+
+    <!--  CKEditor -->
+    <script src="~/lib/ckeditor/ckeditor.js"></script>
+
+    <!-- Microsoft Graph Toolkit -->
+    <script src="~/lib/mgt/mgt-loader.js"></script>
+    <script src="~/js/teamsHelper.js"></script>
+    <script>
+        mgt.Providers.globalProvider = new mgt.ProxyProvider("/api/MVCGraph", TeamsHelper.getAsync);
+    </script>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

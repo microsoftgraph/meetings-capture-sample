@@ -1,0 +1,164 @@
+﻿<main>
+    <header>
+        <div class="ms-Grid" dir="ltr">
+            <div class="ms-Grid-row">
+                <div class="ms-Grid-col ms-md12 ms-lg12 ms-xl4">
+
+                    <div class="ms-TextField">
+                        <h2>Meeting Title</h2>
+                        <input id="txtMeetingTitle" class="ms-TextField-field" type="text" value="" placeholder="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="ms-Grid" dir="ltr">
+        <div class="ms-Grid-row">
+            <div class="ms-Grid-col ms-md12 ms-lg12 ms-xl3">
+                <section>
+                    <h2>Attendees</h2>
+                    <p>Add participants</p>
+                    <div class="person-search">
+                        <mgt-people-picker show-max="3"></mgt-people-picker>
+                        <button id="btnAddPerson" class="ms-Button--default ms-Button--withIcon" type="button">
+                            <i class="ms-Icon ms-Icon--CirclePlus"></i>
+                            <span class="ms-Button-label">Add Attendee(s)</span>
+                        </button>
+                    </div>
+                    <div class="person-list">
+                    </div>
+                </section>
+            </div>
+            <div class="ms-Grid-col ms-md12 ms-lg12 ms-xl5">
+                <section>
+                    <h2>Date, Time, Duration</h2>
+                    <p id="selectedSchedule">
+                        Please search for a time below
+                    </p>
+                    <div id="dpDate" class="ms-DatePicker">
+                        <div class="ms-TextField">
+                            <label class="ms-Label">Date</label>
+                            <i class="ms-DatePicker-event ms-Icon ms-Icon--Event"></i>
+                            <input class="ms-TextField-field" type="text" placeholder="Select a date&hellip;">
+                        </div>
+                        <div class="ms-DatePicker-monthComponents">
+                            <span class="ms-DatePicker-nextMonth js-nextMonth"><i class="ms-Icon ms-Icon--ChevronRight"></i></span>
+                            <span class="ms-DatePicker-prevMonth js-prevMonth"><i class="ms-Icon ms-Icon--ChevronLeft"></i></span>
+                            <div class="ms-DatePicker-headerToggleView js-showMonthPicker"></div>
+                        </div>
+                        <span class="ms-DatePicker-goToday js-goToday">Go to today</span>
+                        <div class="ms-DatePicker-monthPicker">
+                            <div class="ms-DatePicker-header">
+                                <div class="ms-DatePicker-yearComponents">
+                                    <span class="ms-DatePicker-nextYear js-nextYear"><i class="ms-Icon ms-Icon--ChevronRight"></i></span>
+                                    <span class="ms-DatePicker-prevYear js-prevYear"><i class="ms-Icon ms-Icon--ChevronLeft"></i></span>
+                                </div>
+                                <div class="ms-DatePicker-currentYear js-showYearPicker"></div>
+                            </div>
+                            <div class="ms-DatePicker-optionGrid">
+                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="0">Jan</span>
+                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="1">Feb</span>
+                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="2">Mar</span>
+                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="3">Apr</span>
+                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="4">May</span>
+                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="5">Jun</span>
+                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="6">Jul</span>
+                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="7">Aug</span>
+                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="8">Sep</span>
+                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="9">Oct</span>
+                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="10">Nov</span>
+                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="11">Dec</span>
+                            </div>
+                        </div>
+                        <div class="ms-DatePicker-yearPicker">
+                            <div class="ms-DatePicker-decadeComponents">
+                                <span class="ms-DatePicker-nextDecade js-nextDecade"><i class="ms-Icon ms-Icon--ChevronRight"></i></span>
+                                <span class="ms-DatePicker-prevDecade js-prevDecade"><i class="ms-Icon ms-Icon--ChevronLeft"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="ddlDuration" class="ms-Dropdown" tabindex="0">
+                        <label class="ms-Label">Duration</label>
+                        <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown"></i>
+                        <select class="ms-Dropdown-select">
+                            <option>30 minutes</option>
+                            <option>60 minutes</option>
+                        </select>
+                    </div>
+                    <button id="btnFindTimes" class="ms-Button ms-Button--primary" type="button">
+                        <span class="ms-Button-label">Find available times</span>
+                    </button>
+                </section>
+            </div>
+            <div class="ms-Grid-col ms-md12 ms-lg12 ms-xl4">
+                <section>
+                    <h2>Agenda</h2>
+                    <p>
+                        Enter agenda items below (one per field)
+                    </p>
+                    <div id="agendaList">
+                        <button id="btnAddAgendaItem" class="ms-Button--default ms-Button--withIcon" type="button">
+                            <i class="ms-Icon ms-Icon--CirclePlus"></i>
+                            <span class="ms-Button-label">Add agenda item</span>
+                        </button>
+                    </div>
+                    <div class="section-separator"></div>
+                    <h2>Attachments</h2>
+                    <p>
+                        Add meeting docs
+                    </p>
+                    <div class="two-column">
+                        <button id="btnBrowser" class="ms-Button ms-Button--primary" type="button">
+                            <span class="ms-Button-label">Browse</span>
+                        </button>
+                    </div>
+                    <div class="file-list">
+                    </div>
+                    <div id="files" style="visibility:hidden"></div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-action">
+        <button id="btnSave" class="ms-Button ms-Button--primary">
+            <span class="ms-Button-label">Save </span>
+        </button>
+        <button id="btnCancel" class="ms-Button--default" type="button">
+            <span class="ms-Button-label">Cancel</span>
+        </button>
+    </div>
+</main>
+
+<div id="findTimeDialog" class="ms-Dialog ms-Dialog--multiline">
+    <div class="ms-Dialog-title">Select an available time</div>
+    <div class="ms-Dialog-content">
+    </div>
+</div>
+
+<div id="MessageDialog" class="ms-Dialog">
+    <div class="ms-Dialog-title">Your meeting has been created.</div>
+    <div class="ms-Dialog-actions">
+        <button id="btnSaveDone" class="ms-Button ms-Dialog-action ms-Button--primary">
+            <span class="ms-Button-label">OK</span>
+        </button>
+    </div>
+</div>
+
+<div id="lodingDialog" class="ms-Dialog ms-Dialog--blocking">
+    <div class="ms-Dialog-content">
+        <div class="ms-Spinner ms-Spinner--large">
+            <div class="ms-Spinner-label">
+                Creating meeting.......
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="overlay" class="ms-Overlay"></div>
+
+@section Scripts {
+    <script src="~/js/newmeeting.js" asp-append-version="true"></script>
+}

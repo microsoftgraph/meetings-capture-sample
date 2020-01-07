@@ -1,0 +1,122 @@
+﻿@{
+    Layout = null;
+}
+@model MeetingCaptureWebApp.Models.EmailTemplateViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: Segoe UI,SegoeUI,Segoe WP,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 640px;
+            padding: 20px 24px;
+            box-sizing: border-box;
+        }
+
+        .ms-Grid-row{
+            display: flex;
+        }
+
+        .ms-Grid-col{
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        h3 {
+            height: 28px;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 1.31;
+            text-align: left;
+            color: #252423;
+            margin: 0 0 15px;
+        }
+
+        .gray-bg {
+            padding: 20px 20px 30px;
+            background-color: #f1f0ef;
+        }
+
+        a {
+            color: #6264a7;
+        }
+
+        .attachments-list a {
+            font-size: 12px;
+            display: block;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+        .agenda-list ul {
+            padding-left: 1em;
+            list-style-type: square;
+        }
+
+            .agenda-list ul li {
+                font-size: 12px;
+                color: #000000;
+            }
+
+        .meeting-border {
+            width: 450px;
+            padding: 25px 0;
+            margin: 30px 0 30px;
+            border-bottom: 1px solid #eee;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="ms-Grid">
+            <div class="ms-Grid-row">
+                <div class="ms-Grid-col">
+                    <h3>Meeting Agenda</h3>
+                    <div class="agenda-list">
+                        <ul>
+                            @if (Model.Agendas != null)
+                            {
+                                @foreach (var agenda in Model.Agendas)
+                                {
+                                    <li>@agenda</li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="ms-Grid-col">
+                    <div class="gray-bg">
+                        <h3>Attachments</h3>
+                        <div class="attachments-list">
+                            @if (Model.Attachments != null)
+                            {
+                                @foreach (var attachment in Model.Attachments)
+                                {
+                                    <a href="@attachment.WebUrl">@attachment.Name</a>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="meeting-border">
+            <p>
+                <a href="@Model.JoinUrl">Join Microsoft Teams Meeting</a>
+            </p>
+            <p style="font-size: 12px;">
+                <a href="https://products.office.com/en-us/microsoft-teams/group-chat-software">Learn more about Teams</a> | <a href="https://docs.microsoft.com/en-us/MicrosoftTeams/tutorial-meetings-in-teams">Meeting options</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

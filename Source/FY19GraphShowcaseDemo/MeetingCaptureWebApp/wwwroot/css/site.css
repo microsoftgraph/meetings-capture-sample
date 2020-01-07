@@ -1,0 +1,735 @@
+﻿html, body {
+    background-color: #f3f2f1;
+    height: 100%;
+}
+
+a {
+    color: #5458af;
+}
+
+hide {
+    display: none;
+}
+
+@media (max-width: 1023px) {
+    .ms-Grid-col {
+        margin-bottom: 20px;
+    }
+}
+
+header {
+    padding: 17px 0px 26px;
+}
+
+    header h2 {
+        font-size: 30px;
+        line-height: .3;
+    }
+
+section {
+    background-color: #fff;
+    padding: 1px 21px 11px;
+}
+
+    section .section-separator {
+        height: 20px;
+        background-color: #f3f2f1;
+        margin-left: -21px;
+        margin-right: -21px;
+    }
+
+h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 11px;
+    line-height: 1;
+}
+
+.ms-Grid-col section:nth-child(2) {
+    margin-top: 20px;
+}
+
+.ms-Label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+textarea {
+    resize: none;
+}
+
+hr {
+    margin-top: 2em;
+}
+
+.hide {
+    display: none;
+}
+
+.ms-Spinner-label {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.ms-Button--default {
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    font-weight: 400;
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: top;
+    padding-top: 0px;
+    padding-right: 16px;
+    padding-bottom: 0px;
+    padding-left: 16px;
+    min-width: 80px;
+    height: 32px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(50, 49, 48);
+    user-select: none;
+    outline: transparent;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(138, 136, 134);
+    border-image: initial;
+    text-decoration: none;
+    border-radius: 2px;
+}
+
+    .ms-Button--default:active {
+        background-color: rgb(237, 235, 233);
+        color: rgb(32, 31, 30);
+    }
+
+    .ms-Button--default:hover {
+        background-color: rgb(243, 242, 241);
+        color: rgb(32, 31, 30);
+    }
+
+    .ms-Button--default.ms-Button--withIcon .ms-Icon {
+        margin-right: 5px;
+        position: relative;
+        top: 2px;
+    }
+
+.ms-Dialog-subText {
+    font-size: 16px;
+    color: ##252423;
+}
+
+.ms-Dialog-actions {
+    text-align: center;
+}
+
+    .ms-Dialog-actions button:first-child {
+        margin-right: 20px;
+    }
+
+.ms-Card {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: auto;
+    height: auto;
+    max-width: 500px;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-shadow: rgba(0, 0, 0, 0.133) 0px 1.6px 3.6px 0px, rgba(0, 0, 0, 0.11) 0px 0.3px 0.9px 0px;
+    cursor: default;
+    min-width: 300px;
+    border-radius: 2px;
+    transition: box-shadow 0.5s ease 0s;
+}
+
+.ms-Overlay {
+    background-color: rgba(0,0,0,.6);
+}
+
+.ms-Panel.ms-Panel--md {
+    max-width: 550px;
+}
+
+p {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+    p span {
+        font-weight: 400;
+    }
+
+.container {
+    height: 100%;
+    min-height: 100%;
+}
+
+.index-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+    .index-container > * {
+        margin-bottom: 10px;
+    }
+
+.two-column {
+    display: flex;
+}
+
+    .two-column input {
+        margin-right: 10px;
+        flex: 1;
+    }
+
+.file-item {
+    display: flex;
+    padding: 14px 22px;
+    border-bottom: 1px solid #eee;
+}
+
+    .file-item i {
+        font-size: 40px;
+    }
+
+.file-info {
+    padding: 4px 10px;
+    flex: 1;
+}
+
+.file-date {
+    font-size: 12px;
+    color: ##605e5c;
+    line-height: 1.33;
+    margin-top: 3px;
+}
+
+.file-action {
+}
+
+#findTimeDialog {
+    width: 640px;
+    max-width: initial;
+    max-height: 380px;
+    padding-bottom: 0px;
+    overflow: auto;
+}
+
+    #findTimeDialog .ms-Dialog-title {
+        font-size: 22px;
+        font-weight: 600;
+        margin-top: -10px;
+    }
+
+    #findTimeDialog .ms-Dialog-content{
+        height: 330px;
+        overflow: auto;
+    }
+
+    #findTimeDialog table {
+        width: 100%;
+    }
+
+        #findTimeDialog table td {
+            width: 50%;
+            text-align: left;
+        }
+
+            #findTimeDialog table td:first-child div:first-child {
+                font-size: 20px;
+                font-weight: 600;
+                margin-bottom: 7px;
+            }
+
+            #findTimeDialog table td:first-child div:last-child {
+                font-size: 14px;
+            }
+
+            #findTimeDialog table td:last-child {
+                position: relative;
+            }
+
+                #findTimeDialog table td:last-child div {
+                    padding-left: 20px;
+                }
+
+                    #findTimeDialog table td:last-child div:first-child {
+                        font-size: 14px;
+                        font-weight: 600;
+                        margin: 10px auto 7px;
+                    }
+
+                    #findTimeDialog table td:last-child div:last-child {
+                        font-size: 14px;
+                    }
+
+                #findTimeDialog table td:last-child .ms-Icon {
+                    font-size: 18px;
+                    position: absolute;
+                    left: -6px;
+                    top: 8px;
+                }
+
+    #findTimeDialog .ms-Button--compound {
+        width: 100%;
+        max-width: initial;
+    }
+
+.bottom-action {
+    margin: 20px 8px 20px 0;
+    text-align: right;
+}
+
+    .bottom-action button {
+        margin-right: 8px;
+    }
+
+        .bottom-action button:last-child {
+            margin-right: 0;
+        }
+
+.flex-section .bottom-action {
+    margin-right: 0;
+}
+
+#txtNotes {
+    min-height: 360px;
+}
+
+.task-bar {
+    display: flex;
+}
+
+    .task-bar .ms-TextField {
+        margin-right: 20px;
+        flex: 1;
+    }
+
+.ms-Panel-headerText {
+    font-size: 30px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.ms-Panel-contentInner {
+    position: relative;
+    margin-top: 0;
+}
+
+.ms-Panel-content h2:nth-of-type(n + 2) {
+    margin-top: 25px;
+    margin-bottom: 11px;
+}
+
+.ms-Panel-content {
+    position: relative;
+}
+
+.panel-action {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+    .panel-action button:first-child {
+        margin-right: 20px;
+    }
+
+#agendaList .ms-TextField {
+    margin-bottom: 20px;
+}
+
+#agendaList {
+    padding-bottom: 20px;
+}
+
+.agenda-item{
+    display: flex;
+}
+
+.agenda-item .ms-TextField{
+    flex: 1;
+}
+
+.agenda-action .ms-Button{
+    min-width: 50px;
+}
+
+.person-search {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.person-list {
+    min-height: 100px;
+}
+
+    .person-list > div {
+        margin: 8px 0;
+        display: flex;
+    }
+
+    .person-list .ms-Button--hero {
+        position: relative;
+        min-width: 40px;
+        top: -5px;
+        vertical-align: text-top;
+    }
+
+#btnFindTimes {
+    margin-top: 5px;
+}
+
+.file-list {
+    min-height: 200px;
+}
+
+.unattend {
+    min-height: 16px;
+}
+
+#MessageDialog {
+    width: 480px;
+    min-height: 120px;
+    max-width: initial;
+}
+
+    #MessageDialog .ms-Dialog-title {
+        font-size: 30px;
+        color: #000;
+        min-height: 80px;
+    }
+
+    #MessageDialog .ms-Dialog-actions {
+        text-align: right;
+    }
+
+.agendas textarea {
+    height: 144px;
+}
+
+.flex-section {
+    display: flex;
+    flex-direction: column;
+}
+
+    .flex-section .ms-TextField {
+        flex: 1;
+    }
+
+    .flex-section textarea {
+        height: 100%;
+    }
+
+#createMeetingContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+#agendaContainer.hide {
+    display: none;
+}
+
+#agendaContainer .event {
+    box-shadow: var(--event-box-shadow, 0px 2px 8px rgba(0, 0, 0, 0.092));
+    display: flex;
+    margin: 10px 10px;
+    background-color: white;
+}
+
+    #agendaContainer .event .eventContainer {
+        display: flex;
+        width: 70%;
+    }
+
+    #agendaContainer .event .eventButton {
+        display: flex;
+        width: 30%;
+        justify-content: flex-end;
+    }
+
+        #agendaContainer .event .eventButton button {
+            margin-top: 24px;
+            margin-right: 10px;
+        }
+
+    #agendaContainer .event .eventtimecontainer {
+        display: flex;
+        flex-direction: column;
+        width: 120px;
+        margin: 18px 38px 18px 18px;
+        color: rgb(51, 51, 51);
+    }
+
+        #agendaContainer .event .eventtimecontainer .eventtime {
+            font-size: var(--event-time-font-size, 12px);
+            color: #000000;
+            font-weight: 600;
+        }
+
+    #agendaContainer .event .eventdetailscontainer {
+        margin: 14px 18px 14px 0px;
+    }
+
+        #agendaContainer .event .eventdetailscontainer .eventsubject {
+            font-size: var(--event-subject-font-size, 19px);
+            color: #333333;
+            margin: 0px 18px 0px 0px;
+        }
+
+        #agendaContainer .event .eventdetailscontainer .eventlocationcontainer {
+            display: flex;
+            margin: 8px 18px 0px 0px;
+        }
+
+            #agendaContainer .event .eventdetailscontainer .eventlocationcontainer .eventlocation {
+                font-size: var(--event-location-font-size, 12px);
+                color: #000000;
+                margin: 0px 0px 0px 4px;
+            }
+
+#AttachmentsDialog .ms-Dialog-content {
+    min-width: 350px;
+}
+
+    #AttachmentsDialog .ms-Dialog-content a {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+#cke_txtNotes {
+    height: 100%;
+}
+
+.agendas-list ul {
+    padding: 0 0 20px 1em;
+}
+
+.attachments-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.attachments-list li {
+    margin-bottom: 10px;
+}
+
+.agendas-list ul li {
+    margin-bottom: 10px;
+}
+
+mgt-tasks {
+    font-size: 16px;
+}
+
+.receipt > * {
+    display: inline-block;
+}
+
+.receipt i {
+    font-size: 28px;
+    margin-left: 10px;
+}
+
+.followupMeeting .top-action {
+    position: relative;
+    top: 18px;
+}
+
+    .followupMeeting .top-action button {
+        margin-left: 8px;
+    }
+
+.icon {
+    border-radius: 3px;
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+}
+
+.icon-bg-green {
+    background-color: #92c353;
+}
+
+.icon-bg-blue {
+    background-color: #3e4585;
+}
+
+.icon-bg-black {
+    background-color: #000;
+}
+
+.icons-default-fill {
+    fill: #fff;
+}
+
+.app-svg {
+    width: 32px;
+    height: 32px;
+    margin: -4px;
+}
+
+.ms-BrandIcon--icon16 {
+    display: inline-block;
+    margin-right: 5px;
+    position: relative;
+    top: 3px;
+}
+
+#txtMeetingTitle {
+    font-size: large;
+    font-weight: bold;
+}
+
+#TaskDialog {
+    max-width: 740px;
+    width: 740px;
+}
+
+    #TaskDialog h2 {
+        font-size: 17px;
+        margin-bottom: 0px;
+    }
+
+    #TaskDialog .assignedto {
+        margin: 25px 0 15px;
+    }
+
+    #TaskDialog label, #TaskDialog .modified {
+        display: block;
+        font-size: 12px;
+        font-weight: 400;
+        color: #605e5c;
+        padding: 5px 0;
+    }
+
+    #TaskDialog .body {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 10px -10px;
+    }
+
+        #TaskDialog .body > div {
+            flex: 1 1 175px;
+            margin: 0 10px;
+        }
+
+            #TaskDialog .body > div > div {
+                display: flex;
+                align-items:center;
+                background-color: #f3f2f1;
+                border-radius: 3px;
+                border-style: solid;
+                border-width: 0 0 2px;
+                border-color: #f3f2f1;
+                padding: 1px 12px;
+                height: 32px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                max-width: 209px;
+            }
+
+                #TaskDialog .body > div > div .ms-Icon{
+                    margin-right: 5px;
+                }
+
+                #TaskDialog textarea {
+                    background-color: #f3f2f1;
+                    border-radius: 3px;
+                    border-style: solid;
+                    border-width: 0 0 2px;
+                    border-color: #f3f2f1;
+                    padding: 1px 12px;
+                    width: 100%;
+                    height: 60px;
+                    box-sizing: border-box;
+                }
+
+    #TaskDialog .attachments {
+        margin: 20px 0;
+    }
+
+    #TaskDialog .notes {
+        margin: 10px 0 20px;
+    }
+
+    #TaskDialog .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #TaskDialog .bottom {
+        font-size: 12px;
+        padding-left: 30px;
+    }
+
+    #TaskDialog .footer .assigneddate {
+        font-size: 12px;
+        font-weight: 400;
+        color: #a19f9d;
+    }
+
+    #TaskDialog .content{
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+    }
+
+    #TaskDialog .preview-list-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #f3f2f1;
+        width: 42px;
+        height: 42px;
+        margin-right: 20px;
+        text-decoration: none;
+    }
+
+        #TaskDialog .preview-list-image i {
+            color: #5e727c;
+            font-size: 20px;
+        }
+
+    #TaskDialog .item-list-title {
+        display: inline-block;
+        color: #323130;
+    }
+
+    #TaskDialog .color-notstarted {
+        color: #605e5c;
+    }
+    #TaskDialog .color-inprogress {
+        color: #327eaa;
+    }
+    #TaskDialog .color-complete {
+        color: #418040;
+    }
+
+    @media(min-width: 1024px) {
+        .ms-Grid-row {
+        display: flex;
+        align-items: stretch;
+    }
+
+    .ms-Grid-col {
+        float: none !important;
+    }
+
+    section {
+        height: 100%;
+    }
+}

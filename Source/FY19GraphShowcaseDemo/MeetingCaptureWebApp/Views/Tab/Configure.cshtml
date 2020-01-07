@@ -1,0 +1,48 @@
+﻿@*
+    *   * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
+    *   * See LICENSE in the project root for license information.
+*@
+
+@{
+    Layout = "~/Views/Shared/_TeamsTabLayout.cshtml";
+}
+
+<div>
+    <label for="tabChoice">Select the tab you would like to see: </label>
+    <select id="tabChoice" name="tabChoice">
+        <option value="Home">Home</option>
+        <option value="DeleteEvents">Delete Events</option>
+    </select>
+</div>
+
+@section Scripts {
+    <script>
+        function createTabSettings() {
+            var tabChoice = document.getElementById('tabChoice');
+            var selectedTab = tabChoice[tabChoice.selectedIndex].value;
+            if (selectedTab == "Home") {
+                return {
+                    entityId: "meetingcapturehome",
+                    contentUrl: window.location.protocol + '//' + window.location.host + '/',
+                    suggestedDisplayName: "Meeting Capture",
+                }
+            }
+            else {
+                return {
+                    entityId: "deletemeeting",
+                    contentUrl: window.location.protocol + '//' + window.location.host + '/DeleteEvents',
+                    suggestedDisplayName: "Delete Meetings",
+                }
+            }
+        }
+
+        $(function () {
+            microsoftTeams.initialize();
+            microsoftTeams.settings.registerOnSaveHandler(function (saveEvent) {
+                microsoftTeams.settings.setSettings(createTabSettings());
+                saveEvent.notifySuccess();
+            });
+            microsoftTeams.settings.setValidityState(true)
+        });
+    </script>
+}

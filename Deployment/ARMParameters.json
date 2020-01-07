@@ -1,0 +1,33 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "webAppName":{
+            "value":""
+        },
+        "customHostname": {
+            "value":""
+        },
+        "sqlAdministratorLogin": {
+            "value": ""
+        },
+        "sqlAdministratorLoginPassword": {
+            "value": ""
+        },
+        "sqlDatabaseName": {
+            "value": ""
+        },
+        "actionMessageOriginatorId": {
+            "value": ""
+        },
+        "clientId": {
+            "value": ""
+        },
+        "clientSecret": {
+            "value": ""
+        },
+        "tenantId": {
+            "value": ""
+        }
+    }
+}

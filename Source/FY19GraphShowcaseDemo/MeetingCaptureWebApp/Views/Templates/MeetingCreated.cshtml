@@ -1,0 +1,262 @@
+﻿@{
+    Layout = null;
+}
+@model MeetingCaptureWebApp.Models.EmailTemplateViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: Segoe UI,SegoeUI,Segoe WP,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
+            font-size: 12px;
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 640px;
+        }
+
+        .ms-Grid-row {
+            display: flex;
+        }
+
+        .ms-Grid-col {
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        h3 {
+            margin: 15px 0;
+        }
+
+        a {
+            color: #6264a7;
+            font-weight: 600;
+        }
+
+        .header {
+            min-height: 116px;
+            background-color: #3d4584;
+            display: flex;
+            justify-content:space-between;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+            .header div:first-child {
+                flex: 1;
+            }
+
+            .header h1 {
+                font-size: 24px;
+                font-weight: 300;
+                color: white;
+                margin: 0;
+            }
+
+            .header p {
+                font-size: 16px;
+                font-weight: 600;
+                color: white;
+            }
+
+            .header i {
+                top: 28px;
+                right: 24px;
+                font-size: 60px;
+                color: white;
+            }
+
+        .summmary-header {
+            color: #ffffff;
+            height: 43px;
+            background-color: #a19f9d;
+            line-height: 43px;
+            padding-left: 20px;
+            font-size: 16px;
+        }
+
+        .content {
+            padding: 15px 0 0 20px;
+        }
+
+            .content ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .content li {
+                margin-bottom: 15px;
+            }
+
+            .content h3 {
+                font-size: 16px;
+                color: #000;
+                font-weight: bold;
+            }
+
+        .meeting-border {
+            width: 450px;
+            padding: 25px 0;
+            margin: 30px 0 30px;
+            border-bottom: 1px solid #eee;
+            border-top: 1px solid #eee;
+        }
+
+        hr {
+            margin: 15px 20px 15px 0;
+        }
+
+        .name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #252423;
+        }
+
+        .agenda-list li {
+            margin-bottom: 5px;
+        }
+
+        .footer {
+            margin-top: 40px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        .img {
+            margin-top: -48px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: rgb(185,29,71);
+        }
+
+        table tr td:nth-child(1) {
+            padding-right: 15px;
+        }
+
+        table tr:nth-child(2n) td {
+            padding-bottom: 20px;
+        }
+
+        .html-container {
+            position: relative;
+            width: 280px;
+            overflow: auto;
+        }
+
+            .html-container * {
+                position: unset !important;
+                width: auto !important;
+                height: auto !important;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div style="flex: 1">
+                <h1>@Model.Title</h1>
+                <p>@Model.Start.ToString("MMMM dd, yyyy") | @Model.Start.ToString("hh:mm tt") - @Model.End.ToString("hh:mm tt") (@Model.End.Subtract(Model.Start).TotalMinutes minutes) UTC</p>
+            </div>
+            <div style="width: 60px; margin-top: 10px; margin-left: 10px;">
+                <i>
+                    <img width="50px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAACFCAMAAACe0X18AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6REEyNjU1OTVGNjQwMTFFOTkwNjZBRjQxMTAzNEUzMzkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6REEyNjU1OTZGNjQwMTFFOTkwNjZBRjQxMTAzNEUzMzkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEQTI2NTU5M0Y2NDAxMUU5OTA2NkFGNDExMDM0RTMzOSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpEQTI2NTU5NEY2NDAxMUU5OTA2NkFGNDExMDM0RTMzOSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PnONDh4AAAB+UExURerr8m91pMzO34SJsbi70t/g6/X2+bS3z9zd6fr7/KCkw/7+/2txofz8/dja5o2St2VsnuHj7Pr6/MvN3pqev11kmFphlv39/uPk7b7B1sTH2nyCrPb2+dTW5Pf4+vj4+7W40Pf3+uvs8nl/qquuyUdOivHx9oGHr////z1FhIo1S0AAAADgSURBVHja7NrXDoIwGIZhhhQZDtx7D7j/G9SkxMSGmFSxUfp+R6Q/7XPUvw3BKYzEeTwFuYynvOELOR7FSiEsJziuUqhYCQamWUyaCZlOWRyI5+wTOZ5slMK2nDBdKQV1pcWdcZ382/FgYMwz61bdOVQxYe1HZgADAwMD88/M+OrrZXl+h4kjzUPy1e0TBsYShp4GAwMDAwMDA/ObzHGn+ZXuNOFyC2M9M7oIvWQpzQYGBgYGBgYGpjlMr9vWy7DPHRrGesbQvqGnwcDAwFjGzP26M+MPYhiYj5jCSG4CDAB/ALrup/UQdAAAAABJRU5ErkJggg==" />
+                </i>
+            </div>
+        </div>
+        <div class="summmary-header">
+            Meeting Summmary
+        </div>
+        <div class="content">
+            <h3>Attendees (@Model.Users.Count())</h3>
+            <ul>
+                @foreach (var user in Model.Users)
+                {
+                    <li>
+                        <div style="display:inline-block; position:relative; width:48px; height:48px; position:relative">
+                            <div style="width:48px; height:48px; max-height:0; background-color: rgb(185, 29, 71); font-size: 16px; border-radius:50%;text-align:center;line-height:48px">
+                                <span style="color:white">@MeetingCaptureWebApp.Controllers.TemplatesController.GetAbbreviation(user.DisplayName)</span>
+                            </div>
+                            <div class="img">
+                                <img src="https://outlook.office365.com/owa/service.svc/s/GetPersonaPhoto?email=@user.Mail">
+                            </div>
+
+                        </div>
+                        <div style="display: inline-block; vertical-align: top; margin-left: 10px">
+                            <div class="name">@user.DisplayName</div>
+                            <div class="title">@user.JobTitle</div>
+                        </div>
+                    </li>
+                }
+            </ul>
+            <hr />
+            <h3>Meeting Agenda</h3>
+            <ul class="agenda-list">
+                @if (Model.Agendas != null)
+                {
+                    @foreach (var agenda in Model.Agendas)
+                    {
+                        <li>@agenda</li>
+                    }
+                }
+            </ul>
+            <hr />
+            <div class="ms-Grid" dir="ltr">
+                <div class="ms-Grid-row">
+                    <div class="ms-Grid-col ms-sm6 ms-md6  ms-lg6">
+                        <h3>Notes</h3>
+                        @if (!string.IsNullOrEmpty(Model.NoteUri))
+                        {
+                            <a href="@Model.NoteUri">View notes in OneNote</a>
+                            <div class="html-container">
+                                @Html.Raw(Model.NoteContent)
+                            </div>
+                        }
+                    </div>
+                    <div class="ms-Grid-col ms-sm6 ms-md6  ms-lg6">
+                        <h3>Tasks</h3>
+                        <table>
+                            @if (Model.Tasks != null)
+                            {
+                                @foreach (var task in Model.Tasks)
+                                {
+                                    @if (task.Completed)
+                                    {
+                                        <tr style="text-decoration:line-through">
+                                            <td><a>@task.Title</a></td>
+                                            <td rowspan="2">Due @task.DueDate UTC</td>
+                                        </tr>
+                                        <tr style="text-decoration:line-through">
+                                            <td>@task.AssignedTo</td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td><a>@task.Title</a></td>
+                                            <td rowspan="2">Due @task.DueDate UTC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@task.AssignedTo</td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <img width="180px" src="http://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE2qVsJ?ver=3f74" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

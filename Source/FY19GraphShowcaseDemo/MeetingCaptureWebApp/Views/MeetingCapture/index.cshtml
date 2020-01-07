@@ -1,0 +1,24 @@
+﻿<div class="index-container">
+    <img src="~/images/MeetingCapture.jpg" />
+    <button id="btnNewMeeting" class="ms-Button ms-Button--primary" style="display: none" onclick="goToNewMeetingPage()">
+        <span class="ms-Button-label">Create Meeting</span>
+    </button>
+</div>
+
+<div id="createMeetingDialog" class="ms-Dialog ms-Dialog--lgHeader">
+    <div class="ms-Dialog-content">
+        <p class="ms-Dialog-subText">No upcoming meetings are set up for this channel, do you want to make one? </p>
+    </div>
+    <div class="ms-Dialog-actions">
+        <button class="ms-Button ms-Dialog-action ms-Button--primary" onclick="goToNewMeetingPage()">
+            <span class="ms-Button-label">Yes</span>
+        </button>
+        <button class="ms-Dialog-action ms-Button--default">
+            <span class="ms-Button-label">No</span>
+        </button>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/index.js" asp-append-version="true"></script>
+}
