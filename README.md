@@ -31,9 +31,9 @@ We've automated as much of the installation process as possible with PowerShell 
 1. Create the AAD Application with the New-Application method in the Microsoft.Graph.Beta.Identity.Application module in MSGraph-SDK-PowerShell.
 1. Deploy the ARM Template with the PowerShell Azure (Az) Module to create all the resources in Azure and configure the Logic app.
 1. Compile the server code with Visual Studio 2019 or VS code, then deploy the dotnet core Web Site and Web Job.
-1. Compile the SharePoint SPFx web part with npm and package it into a SharePoint package (sppkg), then deploy it to the SharePoint App Catalog with the PNP PowerShell module.
 1. Create the Teams App and deploy it.
 1. Create tabs for the Meeting Capture web app and the Pending Meetings SPFx web part. 
+1. Compile the SharePoint SPFx web part with npm and package it into a SharePoint package (sppkg), then deploy it to the SharePoint App Catalog with the PNP PowerShell module.
 
 ## Deployment steps
 
