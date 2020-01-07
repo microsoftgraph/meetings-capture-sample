@@ -307,8 +307,8 @@ You can also add another tab with the Delete Events option selected if you want 
 1. Click **Test and distribute** and click **Install** button.  
 ![Install app](./assets/teams-install-app.jpg)
 1. **Select Add** to a team.  
-1. Select a channel and click **Set up a tab**.  
-1. Configure Tab as following, then click **Save** button.  
+1. Select a channel and then click **Set up a tab**.  
+1. Select the Home value in the dropdown list, then click the **Save** button.
 1. Done.  
 
 ### Microsoft Graph Toolkit - Controls and Proxy Provider
