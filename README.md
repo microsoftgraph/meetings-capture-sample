@@ -306,13 +306,10 @@ You can also add another tab with the Delete Events option selected if you want 
 1. Select **Meeting Capture Web.**  
 1. Click **Test and distribute** and click **Install** button.  
 ![Install app](./assets/teams-install-app.jpg)
-1. Select Add to a team.  
-![Add to team](./assets/teams-add-to-team.jpg)
+1. **Select Add** to a team.  
 1. Select a channel and click **Set up a tab**.  
-![Setup tab](./assets/teams-setup-tab.jpg)
 1. Configure Tab as following, then click **Save** button.  
-![Save tab](./assets/teams-save-tab.jpg)
-21.  Done.  
+1. Done.  
 
 ### Microsoft Graph Toolkit - Controls and Proxy Provider
 In this sample we use the [Graph Toolkit Controls](https://github.com/microsoftgraph/microsoft-graph-toolkit) wherever possible.  You will see them in both the ASP.NET MVC Web Site and in the SPFX web part.  By default, Graph Toolkit Controls make client side Graph API calls.  In this sample, the Graph Toolkit controls use the Proxy Provider that allows it to use the .NET SDK to make server side calls to Graph.  We took this approach because we did not want to have some of the application's calls to Graph client side and some of them server side.  This pattern makes the Graph API access pattern consistent.  You do not have to use the same approach we used in this sample, it is OK to skip the proxy and instead have both client side and server side calls to the Graph API in your code.  It's up to you.
