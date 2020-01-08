@@ -66,7 +66,7 @@ We've automated as much of the installation process as possible with PowerShell 
    - Open a PowerShell terminal and make sure you **Run as Administrator**.
    - Change to the directory where you cloned the code.
    - Change to the **Deployment** directory.
-   - Run the PowerShell command `Connect-Graph`.
+   - Run the PowerShell command `Connect-Graph`.  When prompted, log in with an account that has permissions to create an AAD app.
    - Run the script `.\NewApp.ps1`.  When prompted, enter the name of the application you plan to create in AAD, and the custom domain you prepared. When the script finishes running, record the following return values. You will use them in subsequent steps.
       - **Tenant Id**
       - **Client Id**
