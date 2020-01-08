@@ -12,7 +12,7 @@ To see an end to end demonstration of the functionality in this sample, watch [t
 
 - Install the following PowerShell modules
    - [Microsoft Graph PowerShell SDK](https://github.com/microsoftgraph/msgraph-sdk-powershell)
-   - [SharePoint PnP](https://github.com/SharePoint/PnP-PowerShell/wiki/Install-SharePointPnPPowerShellOnline,-PowerShell-5.0-and-Nuget-behind-proxy)
+   - [SharePoint PnP](https://github.com/SharePoint/PnP-PowerShell#installation)
    - [Azure](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-3.1.0)
 - Install .Net Core 3.0 SDK and a text editor like Visual Studio or Visual Studio Code
 - Install Node.js [Download](https://nodejs.org/en/download/)
