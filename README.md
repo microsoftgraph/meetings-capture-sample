@@ -66,12 +66,18 @@ We've automated as much of the installation process as possible with PowerShell 
    - Open a PowerShell terminal and make sure you **Run as Administrator**.
    - Change to the directory where you cloned the code.
    - Change to the **Deployment** directory.
-   - Run the PowerShell command `Connect-Graph`.  When prompted, log in with an account that has permissions to create an AAD app.
+   - Run the PowerShell command `Connect-Graph -Scopes Directory.AccessAsUser.All`.  When prompted, log in with an account that has permissions to create an AAD app.  Make sure you select the **Consent on behalf of your organization** checkbox as the tenant admin.
+   
+   ![Consent Popup](./assets/consent-popup.png)
+   
+   - As a regular user (in another computer), run `Connect-Graph -ForceRefresh` since the access token in your cache hasn’t expired yet and you need to use the new scope (**Directory.AccessAsUser.All**). If your access token had expired, MSAL will refresh the token silently and acquire a new one with the updated scope.
+   
    - Run the script `.\NewApp.ps1`.  When prompted, enter the name of the application you plan to create in AAD, and the custom domain you prepared. When the script finishes running, record the following return values. You will use them in subsequent steps.
       - **Tenant Id**
       - **Client Id**
       - **Client Secret**
       - **App IdentifierUri**
+      
    - Login to the [Azure Portal](https://portal.azure.com). Open **Azure Active Directory**. In **App registrations**, find the AAD application the script created. In the **API permissions** page, click **Grant admin consent for ...** to grant consent to use the permissions.
 
    ![AAD Consent Permissions](./assets/AAD-Consent.jpg)
