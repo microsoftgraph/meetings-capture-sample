@@ -86,10 +86,10 @@ We've automated as much of the installation process as possible with PowerShell 
 	- Click **Add a scope**.
 	- In the **Scope name** textbox enter `access_as_user`.
 	- In the **Who can consent** toggle, select Admins and users.
-	- In the **Admin consent display name** textbox enter.
-	- In the **Admin consent description** textbox enter.
-	- In the **User consent display name** textbox enter.
-	- In the **User consent description** textbox enter.
+	- In the **Admin consent display name** textbox enter `Teams can access the user's profile.`.
+	- In the **Admin consent description** textbox enter `Allows Teamsto call the app web APIs as the current user.`.
+	- In the **User consent display name** textbox enter `Teams can access your user profile and make requests on your behalf.`.
+	- In the **User consent description** textbox enter `Enable Teams to call this app's APIs with the same rights that you have.`.
 	- Click **Add scope**.
 
 	![App ID URI](./assets/add-scope.png)
