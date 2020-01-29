@@ -114,22 +114,22 @@ We've automated as much of the installation process as possible with PowerShell 
 
 	- Repeat the process until all of the permissions in this list are added.
 
-		Calendars.Read
-		Contacts.Read
-		email
-		Group.ReadWrite.All
-		Mail.Send
-		Notes.Create
-		Notes.ReadWrite
-		Notes.ReadWrite.All
-		offline_access
-		OnlineMeetings.ReadWrite
-		openid
-		People.Read
-		People.Read.All
-		profile
-		User.Read
-		User.Read.All	
+		- Calendars.Read
+		- Contacts.Read
+		- email
+		- Group.ReadWrite.All
+		- Mail.Send
+		- Notes.Create
+		- Notes.ReadWrite
+		- Notes.ReadWrite.All
+		- offline_access
+		- OnlineMeetings.ReadWrite
+		- openid
+		- People.Read
+		- People.Read.All
+		- profile
+		- User.Read
+		- User.Read.All	
 
 	![Permissions Added](./assets/permissions-added.png)
 
