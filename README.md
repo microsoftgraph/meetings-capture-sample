@@ -51,7 +51,7 @@ We've automated as much of the installation process as possible with PowerShell 
       
    ![Actionable Email Developer Dashboard Form](./assets/Actionable-Message-Form.jpg)
 
-   - In the tenant where you configured the Actionale Email Developer Dashboard, log in to the Office 365 Tenant administrator's email and find the registration confirmation email. Record the following information:
+   - In the tenant where you configured the Actionable Email Developer Dashboard, log in to the Office 365 Tenant administrator's email and find the registration confirmation email. Record the following information:
       
    | Item | Key |
    | ---- | ----|
@@ -84,7 +84,7 @@ We've automated as much of the installation process as possible with PowerShell 
 
 	- Click **Save**.
 	- Click **Add a scope**.
-	- In the **Scope name** textbox enter .
+	- In the **Scope name** textbox enter `access_as_user`.
 	- In the **Who can consent** toggle, select Admins and users.
 	- In the **Admin consent display name** textbox enter.
 	- In the **Admin consent description** textbox enter.
