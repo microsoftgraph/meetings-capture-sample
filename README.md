@@ -411,4 +411,4 @@ In the Meeting Capture web application, on the new meeting creation page, we imp
 5. When adding an attendee from the UI, first determine if the person exists in the current attendees list. If the person does not exist in the list, then add them.
 
 ### Known Limitations
-- The SharePoint upload document API use in this sample can only upload files less than 4MB.  For files larger than 4MB, a more complicated method is needed, it is explained here.  https://docs.microsoft.com/en-us/graph/api/driveitem-put-content?view=graph-rest-1.0&tabs=http 
+- The SharePoint upload document API used in this sample can only upload files less than 4MB.  For files larger than 4MB, a more complicated method is needed, it is explained here.  https://docs.microsoft.com/en-us/graph/api/driveitem-put-content?view=graph-rest-1.0&tabs=http 
