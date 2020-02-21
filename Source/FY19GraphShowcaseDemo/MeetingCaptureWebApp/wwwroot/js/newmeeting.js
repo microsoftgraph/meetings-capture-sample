@@ -60,8 +60,7 @@ function appendAgendasControl() {
 
 function initAgendasControls() {
     let i = 0;
-    while (i < 3)
-    {
+    while (i < 3) {
         appendAgendasControl();
         i++;
     }
@@ -79,6 +78,11 @@ function uploadFiles() {
     let fileControl = $(this);
     let file = $(this)[0].files[0];
     let fileIconHtml;
+
+    if (file.size >= 4194304) {
+        showMessageDialog("The SharePoint upload document API used in this sample can only upload files less than 4MB. For files larger than 4MB, a more complicated method is needed, it is explained <a target='_blank' href ='https://docs.microsoft.com/en-us/graph/api/driveitem-put-content?view=graph-rest-1.0&tabs=http'>here</a>.");
+        return;
+    }
 
     if (file.name.search(/docx/i) != -1) {
         fileIconHtml = '<div class="ms-BrandIcon--icon48 ms-BrandIcon--word" />';
@@ -152,19 +156,22 @@ function findUnavailability(index, dataItems) {
 
 function showMessageDialog(message) {
     showLoadingDialog(false);
-    $('#MessageDialog .ms-Dialog-title').text(message);
+    $('#MessageDialog .ms-Dialog-title').html(message);
     messageDialog.open();
 }
 
 function showLoadingDialog(visible) {
-    if (visible) {
-        $('#overlay').show();
-        lodingDialog.open();
+    try {
+        if (visible) {
+            $('#overlay').show();
+            lodingDialog.open();
+        }
+        else {
+            $('#overlay').hide();
+            lodingDialog.close();
+        }
     }
-    else {
-        $('#overlay').hide();
-        lodingDialog.close();
-    }
+    catch{}
 }
 
 function pageInit(teamId, channelId) {
@@ -368,7 +375,7 @@ function pageInit(teamId, channelId) {
     $('#btnAddPerson').on("click", function () {
         var persons = $('mgt-people-picker')[0].selectedPeople;
         persons.forEach(function (item) {
-            if ($(`.person-list mgt-person[person-query='${item.userPrincipalName||item.scoredEmailAddresses[0].address}']`).length == 0) {
+            if ($(`.person-list mgt-person[person-query='${item.userPrincipalName || item.scoredEmailAddresses[0].address}']`).length == 0) {
                 $(`<div>
                 <mgt-person person-query="${item.userPrincipalName || item.scoredEmailAddresses[0].address}" show-name></mgt-person>
                 <button class="ms-Button ms-Button--hero">
