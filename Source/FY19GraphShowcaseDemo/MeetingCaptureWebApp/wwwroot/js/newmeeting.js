@@ -80,7 +80,7 @@ function uploadFiles() {
     let fileIconHtml;
 
     if (file.size >= 4194304) {
-        showMessageDialog("The SharePoint upload document API use in this sample can only upload files less than 4MB. For files larger than 4MB, a more complicated method is needed, it is explained <a target='_blank' href ='https://docs.microsoft.com/en-us/graph/api/driveitem-put-content?view=graph-rest-1.0&tabs=http'>here</a>.");
+        showMessageDialog("The SharePoint upload document API used in this sample can only upload files less than 4MB. For files larger than 4MB, a more complicated method is needed, it is explained <a target='_blank' href ='https://docs.microsoft.com/en-us/graph/api/driveitem-put-content?view=graph-rest-1.0&tabs=http'>here</a>.");
         return;
     }
 
