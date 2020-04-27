@@ -178,7 +178,7 @@ namespace MeetingCaptureWebApp.Helpers
         }
 
         // Send an email message from the current user.
-        public static async Task SendEmail(GraphServiceClient graphClient, IHostingEnvironment hostingEnvironment, string recipients, HttpContext httpContext)
+        public static async Task SendEmail(GraphServiceClient graphClient, IWebHostEnvironment hostingEnvironment, string recipients, HttpContext httpContext)
         {
             if (recipients == null) return;
 

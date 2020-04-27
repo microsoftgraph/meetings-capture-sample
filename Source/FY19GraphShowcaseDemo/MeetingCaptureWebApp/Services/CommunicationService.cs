@@ -14,63 +14,37 @@ using System.Threading.Tasks;
 
 namespace MeetingCaptureWebApp.Services
 {
-    public class CommunicationService : ICommunicationService
+    public class CommunicationService : BaseGraphService, ICommunicationService
     {
-        private readonly IGraphSdkHelper _graphSdkHelper;
-
-        public CommunicationService(IGraphSdkHelper graphSdkHelper)
+        public CommunicationService(IGraphSdkHelper graphSdkHelper) : base(graphSdkHelper)
         {
-            _graphSdkHelper = graphSdkHelper;
             //_graphClient = _graphSdkHelper.GetDaemonAppClient();
         }
 
-        // Currently MS Graph Client SDK does not support OnlineMeeting API.
         public async Task<string> CreateOnlineMeeting(string subject, DateTime startDateTime, string organizerId)
         {
-            var onlineMeeting = new
+            var onlineMeeting = new OnlineMeeting
             {
-                meetingType = "scheduled",
-                subject,
-                startDateTime,
-                participants = new
+                Subject = subject,
+                StartDateTime = startDateTime,
+                Participants = new MeetingParticipants
                 {
-                    organizer = new
+                    Organizer = new MeetingParticipantInfo
                     {
-                        identity = new
+                        Identity = new IdentitySet
                         {
-                            user = new
+                            User = new Identity
                             {
-                                id = organizerId
+                                Id = organizerId
                             }
                         }
                     }
                 }
             };
 
-            var accessToken = await _graphSdkHelper.GetDaemonAppAccessToken();
+            var createdOnlineMeeting = await GraphClient.Me.OnlineMeetings.Request().AddAsync(onlineMeeting);
 
-            using (var client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                using (var request = new HttpRequestMessage(HttpMethod.Post, "https://graph.microsoft.com/beta/app/onlineMeetings"))
-                {
-                    var json = JsonConvert.SerializeObject(onlineMeeting);
-                    using (var stringContent = new StringContent(json, Encoding.UTF8, "application/json"))
-                    {
-                        request.Content = stringContent;
-
-                        using (var response = await client
-                            .SendAsync(request, HttpCompletionOption.ResponseHeadersRead)
-                            .ConfigureAwait(false))
-                        {
-                            response.EnsureSuccessStatusCode();
-                            string result = await response.Content.ReadAsStringAsync();
-                            dynamic jToken = JToken.Parse(result);
-                            return jToken.joinUrl;
-                        }
-                    }
-                }
-            }
+            return createdOnlineMeeting.JoinUrl;
         }
     }
 }
