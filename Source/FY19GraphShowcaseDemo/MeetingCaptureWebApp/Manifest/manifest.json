@@ -25,7 +25,7 @@
   "accentColor": "#ffffff",
   "configurableTabs": [
     {
-      "configurationUrl": "https://****webapp****/configure/",
+      "configurationUrl": "https://**customHostname**/configure/",
       "canUpdateConfiguration": true,
       "scopes": [
         "team",
@@ -38,10 +38,10 @@
     "identity"
   ],
   "validDomains": [
-    "****webapp****"
+    "**customHostname**"
   ],
   "webApplicationInfo": {
     "id": "****guid****",
-    "resource": "api://****webapp****/****guid****"
+    "resource": "api://**customHostname**/****guid****"
   }
 }
