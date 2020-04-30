@@ -172,7 +172,8 @@
               "AzureAd:TenantId": "[parameters('tenantId')]",
               "AzureAd:ClientId":"[parameters('clientId')]",
               "AzureAd:ClientSecret":"[parameters('clientSecret')]",
-              "TeamTabResource":"[concat(parameters('customHostname'),'/', parameters('clientId'))]"
+              "AzureAd:TeamTabResource":"[concat(parameters('customHostname'),'/', parameters('clientId'))]",
+              "AzureAd:BaseUrl": "https://graph.microsoft.com"
             }
           }
         ]
