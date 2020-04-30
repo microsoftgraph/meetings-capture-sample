@@ -195,6 +195,8 @@ We've automated as much of the installation process as possible with PowerShell 
 
 1. Add the Apps to Microsoft Teams Tabs
 
+   In this section you create a Teams Tab and add the web app to the tab.
+
    **First, deploy the Meeting Capture web app.**
    - Open Microsoft Teams **Apps** and search for Meeting Capture.  
    - Click **Meeting Capture Web.**  
@@ -216,9 +218,17 @@ We've automated as much of the installation process as possible with PowerShell 
       ![Save tab](./assets/teams-save-pendingMeetings.jpg)
 
 1. Compile and deploy SharePoint SPFx web part
+
+    In this section you will configure, compile, package, and deploy the SPFx web part to the App Catalog, add it to a SharePoint Site, approve the API permissions for it, then add it to a Teams Tab and configure it.
+
    - Open the UpcomingMeetings.tsx file in a text editor.
-   - On line 30, set the **targetId** variable equal to the Id for the Planner Plan in the Team and Channel where you installed the Teams app.
-   - On line 31, set the **targetBucketId** variable equal to the Id for the Bucket inside the Planner Plan in the Team and Channel where you installed the Teams app.
+   - On line 30, set the **targetId** variable equal to the Id for the Planner Plan in the Team and Channel where you installed the Teams web app.
+   - On line 31, set the **targetBucketId** variable equal to the Id for the Bucket inside the Planner Plan in the Team and Channel where you installed the Teams web app.
+   
+   > **Note:** You can use the [Microsoft Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer#) to quickly find Planner Ids and Bucket Ids with this query.      
+    >
+    > https://graph.microsoft.com/v1.0/planner/plans/{plan-id}/buckets
+    
    - **Save** the file.
    - In the command line, change to the **.\Source\SPFX\PendingMeetings** directory.
    - Run following commands to restore, build, and package the solution.
@@ -239,6 +249,25 @@ We've automated as much of the installation process as possible with PowerShell 
       | **orgName**                   | \<orgName\>                 | The name of the tenant. If your SharePoint URL is http://contoso.sharepoint.com then your orgName is contoso. |
       | **adminUPN**                  | \<user\>@\<orgName\>.onmicrosoft.com | The site administrator account. For example: admin@contoso.onmicrosoft.com |
       
+    - Add the SharePoint App to the SharePoint site associated with the Team where you are adding the Pending Meetings Teams Tab SPFx app.
+    
+      ![Add SPFx app](./assets/add-spfx-app.png)
+      
+    - Approve the API requests in the SharePoint Admin Center.
+      
+      ![Approve API Access](./assets/approve-api-access.png)
+      
+    - In Teams, click the **+** button to add a new Tab, select **PendingMeetings**, click **Save**.
+      
+    - Enter the Id for the Team and the Id for the Channel that you would like to query tasks from.
+      
+      ![Configure Web Part](./assets/configure-web-part.png)
+      
+    > **Note:** You can use the [Microsoft Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer#) to quickly find Teams Ids and Channel Ids with these queries.      
+    >
+    > https://graph.microsoft.com/v1.0/me/joinedTeams
+    > https://graph.microsoft.com/v1.0/teams/{team-id}/channels
+            
    The deployment is now complete! You are now ready to run the demo.
 
 ## Demo Script
