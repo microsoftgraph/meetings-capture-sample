@@ -15,6 +15,9 @@ using MeetingCaptureWebApp.Helpers;
 using MeetingCaptureWebApp.Data;
 using MeetingCaptureWebApp.Services;
 using System;
+using Microsoft.AspNetCore.Diagnostics;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
 
 namespace MeetingCaptureWebApp
 {
@@ -63,7 +66,24 @@ namespace MeetingCaptureWebApp
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                //Handle exceptions and return a 500 http response with the exception message
+                app.UseExceptionHandler(appBuilder =>
+                {
+                    appBuilder.Run(async context =>
+                    {
+                        var exceptionHandlerFeature = context.Features.Get<IExceptionHandlerFeature>();
+                        if (exceptionHandlerFeature != null)
+                        {
+                            var exceptionMessage = exceptionHandlerFeature.Error.Message;
+
+                            var result = JsonConvert.SerializeObject(exceptionMessage);
+                            context.Response.StatusCode = 500;
+                            context.Response.ContentType = "application/json";
+                            await context.Response.WriteAsync(result);
+                        }
+                    });
+                });
+
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
