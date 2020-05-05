@@ -1,14 +1,14 @@
 {
   "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.5/MicrosoftTeams.schema.json",
   "manifestVersion": "1.5",
-  "version": "1.0",
+  "version": "1.1",
   "id": "b9cc7986-dd56-4b57-ab7d-9c4e5288b775",
   "packageName": "com.fy19teams.com",
   "developer": {
     "name": "canviz",
-    "websiteUrl": "https://www.canviz.com",
-    "privacyUrl": "https://www.canviz.com",
-    "termsOfUseUrl": "https://www.canviz.com"
+    "websiteUrl": "https://graph.microsoft.com",
+    "privacyUrl": "https://graph.microsoft.com",
+    "termsOfUseUrl": "https://graph.microsoft.com"
   },
   "name": {
     "short": "Meeting Capture Web",
@@ -25,7 +25,7 @@
   "accentColor": "#ffffff",
   "configurableTabs": [
     {
-      "configurationUrl": "https://fy19teams.canvizsite.tk/configure/",
+      "configurationUrl": "https://**customHostname**/configure/",
       "canUpdateConfiguration": true,
       "scopes": [
         "team",
@@ -38,10 +38,10 @@
     "identity"
   ],
   "validDomains": [
-    "fy19teams.canvizsite.tk"
+    "**customHostname**"
   ],
   "webApplicationInfo": {
-    "id": "b51680be-9b31-4927-9e3e-fa8024a7d98e",
-    "resource": "api://fy19teams.canvizsite.tk/b51680be-9b31-4927-9e3e-fa8024a7d98e"
+    "id": "****guid****",
+    "resource": "api://**customHostname**/****guid****"
   }
 }

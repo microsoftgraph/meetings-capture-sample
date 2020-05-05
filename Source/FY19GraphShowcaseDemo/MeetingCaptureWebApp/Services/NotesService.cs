@@ -39,7 +39,21 @@ namespace MeetingCaptureWebApp.Services
         public async Task<OnenoteSection> GetChannelSection(string teamId, string channelDisplayName)
         {
             var notebooks = await GraphClient.Groups[teamId].Onenote.Notebooks.Request().GetAsync();
-            return await GetOrCreateOnenoteSectionByChannel(teamId, notebooks.First().Id, channelDisplayName);
+            string notebookId = null;
+            if (notebooks.Count == 0)
+            {
+                var notebook = new Notebook
+                {
+                    DisplayName = Uri.EscapeDataString($"{channelDisplayName.Replace("'", "''")}")
+                };
+                var rtnNotebook = await GraphClient.Groups[teamId].Onenote.Notebooks.Request().AddAsync(notebook);
+                notebookId = rtnNotebook.Id;
+            }
+            else
+            {
+                notebookId = notebooks.First().Id;
+            }
+            return await GetOrCreateOnenoteSectionByChannel(teamId, notebookId, channelDisplayName);
         }
 
         private async Task<OnenoteSection> GetOrCreateOnenoteSectionByChannel(string teamId, string notebookId, string channelName)

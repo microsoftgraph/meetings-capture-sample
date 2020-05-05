@@ -77,20 +77,27 @@ namespace MeetingCaptureWebApp.Services
 
         public async Task<IEnumerable<Event>> GetUpcomingLatestMeeting(string teamId, string channelId)
         {
-            var eventList = new List<Event>();
-            var pagedEvents = await GraphClient.Groups[teamId].Events.Request()
-                .Filter($"Extensions/any(f:f/id eq '{EXTENSION_NAME}') and start/datetime gt '{DateTime.UtcNow.ToString("yyyy-MM-ddThh:mm")}'")
-                .Expand($"Extensions($filter=id eq '{EXTENSION_NAME}')")
-                .OrderBy("start/datetime desc")
-                .GetAsync();
-            eventList.AddRange(pagedEvents.CurrentPage);
-            while (pagedEvents.NextPageRequest != null)
+            try
             {
-                pagedEvents = await pagedEvents.NextPageRequest.GetAsync();
+                var eventList = new List<Event>();
+                var pagedEvents = await GraphClient.Groups[teamId].Events.Request()
+                    .Filter($"Extensions/any(f:f/id eq '{EXTENSION_NAME}') and start/datetime gt '{DateTime.UtcNow.ToString("yyyy-MM-ddThh:mm")}'")
+                    .Expand($"Extensions($filter=id eq '{EXTENSION_NAME}')")
+                    .OrderBy("start/datetime desc")
+                    .GetAsync();
                 eventList.AddRange(pagedEvents.CurrentPage);
-            }
+                while (pagedEvents.NextPageRequest != null)
+                {
+                    pagedEvents = await pagedEvents.NextPageRequest.GetAsync();
+                    eventList.AddRange(pagedEvents.CurrentPage);
+                }
 
-            return eventList.Where(o => o.Extensions?.FirstOrDefault()?.AdditionalData["channelId"].ToString() == channelId);
+                return eventList.Where(o => o.Extensions?.FirstOrDefault()?.AdditionalData["channelId"].ToString() == channelId);
+            } catch (Exception ex)
+            {
+                string exMsg = ex.Message;
+                throw ex;
+            }
         }
 
         public async Task DeleteEventById(string teamId, string eventId)

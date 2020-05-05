@@ -15,9 +15,10 @@ To see an end to end demonstration of the functionality in this sample, watch [t
    - [SharePoint PnP](https://github.com/SharePoint/PnP-PowerShell#installation)
    - [Azure](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-3.1.0)
 - Install .Net Core 3.0 SDK and a text editor like Visual Studio or Visual Studio Code
-- Install Node.js [Download](https://nodejs.org/en/download/)
+- Install Node.js 10.* [Download](https://nodejs.org/dist/latest-v10.x/)
 - Create a custom domain name.
    - Please read the notes about the **customHostname** parameter in the **Deploy the ARM Template with PowerShell** section in this document.  It provides more details and context regarding the custom domain name.
+   - NOTE: you cannot use a CNAME for any top level domains that are already used in Azure or Office 365 
    - There are free short-term domain name services available on the Internet, like https://www.freenom.com/ where you can get a free custom domain name.
 - Office 365 Tenant and a Global Admin account
 - Azure Subscription and an Admin account
@@ -95,12 +96,12 @@ We've automated as much of the installation process as possible with PowerShell 
 	![App ID URI](./assets/add-scope.png)
 
 	- Click **Add a client application**.
-	- In the **Client ID** textbox, enter `1fec8e78-bce4-4aaf-ab1b-5451cc387264`.
+	- In the **Client ID** textbox, enter `1fec8e78-bce4-4aaf-ab1b-5451cc387264`. This is the Microsoft Teams rich client application id.
 	- Check the **Authorized scopes** checkbox.
 	- Click **Add application**.
 	
 	- Click **Add a client application**.
-	- In the **Client ID** textbox, enter `5e3ce6c0-2b1f-4285-8d4b-75ee78787346`.
+	- In the **Client ID** textbox, enter `5e3ce6c0-2b1f-4285-8d4b-75ee78787346`. This is the Microsoft Teams web client application id.
 	- Check the **Authorized scopes** checkbox.
 	- Click **Add application**.
 
@@ -157,7 +158,7 @@ We've automated as much of the installation process as possible with PowerShell 
 
    - Run the Powershell command `Connect-AzAccount`.
    - Run the script `.\DeployTemplate.ps1`. When prompted, enter the name of the resource group to create.
-   - Since Teams does not support http access, we need to add SSL/TLS certificates to the custom domain. If the custom domain already has a certificate, you can follow the official Microsoft documentation [here](https://docs.microsoft.com/en-us/azure/app-service/configure-ssl-bindings#secure-a-custom-domain). If you don't have a certificate, you can follow [this process](https://github.com/sjkp/letsencrypt-siteextension/wiki/How-to-install) to create one and secure your custom domain with it.
+   - Since Teams does not support http access, we need to add SSL/TLS certificates to the custom domain. If the custom domain already has a certificate, you can follow the official Microsoft documentation [here](https://docs.microsoft.com/en-us/azure/app-service/configure-ssl-bindings#secure-a-custom-domain). If you don't have a certificate, you can follow [this process](https://docs.microsoft.com/en-us/azure/app-service/configure-ssl-certificate#create-a-free-certificate-preview) to create one and secure your custom domain with it.
    - Login to the [Azure Portal](https://portal.azure.com). Find the resource group the script just created. 
    - In the resource group, locate the Logic app resource named **SendActionMessage** and click it.
    ![Azure LogicApp](./assets/Azure-LogicApp-Resource.jpg)
